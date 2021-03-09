@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "_2021L_PAIM_Lab\App.csproj", "{62E30B47-1AD0-411E-AE12-B37A97F4E63E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{12A25337-AFB4-4AF3-8388-4B515AF05C89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62E30B47-1AD0-411E-AE12-B37A97F4E63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E30B47-1AD0-411E-AE12-B37A97F4E63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E30B47-1AD0-411E-AE12-B37A97F4E63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E30B47-1AD0-411E-AE12-B37A97F4E63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A25337-AFB4-4AF3-8388-4B515AF05C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A25337-AFB4-4AF3-8388-4B515AF05C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A25337-AFB4-4AF3-8388-4B515AF05C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A25337-AFB4-4AF3-8388-4B515AF05C89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDA1BAB2-FB5D-40EF-91B3-8B0F6374E0CE}
+	EndGlobalSection
+EndGlobal
