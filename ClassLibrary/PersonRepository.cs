@@ -13,9 +13,9 @@
     {
         private readonly Person[] persons = new Person[]
         {
-      new Doctor( "kwadrat1", 1.0 ) { Sex = PersonSex.Male },
-      new Patient( "prostokat1", 2.0, 1.0 ) { Sex = PersonSex.Male },
-      new Patient( "prostokat2", 1.0, 2.0 ) { Sex = PersonSex.Male }
+      new Doctor( "Marek Aureliuk", 1.0) { Sex = PersonSex.Male },
+      new Patient( "Elżbieta Froncz", 2.0, 1.0 ) { Sex = PersonSex.Female },
+      new Patient( "Darek Lebenga", 1.0, 2.0 ) { Sex = PersonSex.Male }
         };
 
         public Person[] Find(PersonSex Sex)

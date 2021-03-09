@@ -18,9 +18,8 @@
             foreach (Person person in PersonRepository.Find(PersonSex.Male))
             {
                 string shapeDescription = person.GetDescription();
-                double shapeArea = person.GetArea();
 
-                Console.WriteLine("person description = {0}; person area = {1}", shapeDescription, shapeArea);
+                Console.WriteLine("person description = {0};", shapeDescription);
             }
             Console.ReadLine();
         }
