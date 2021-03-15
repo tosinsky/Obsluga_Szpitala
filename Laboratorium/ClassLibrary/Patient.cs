@@ -16,6 +16,7 @@
         {
             Debug.Assert(condition: width > 0 && height > 0);
 
+
             this.Width = width;
             this.Height = height;
         }
