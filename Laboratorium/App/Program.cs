@@ -1,10 +1,10 @@
-﻿namespace _2021L_PAIM_Lab.App
+﻿namespace _2021L_PAIM_Lab.Laboratorium.App
 {
     using System;
     using System.Diagnostics;
     using System.Collections.Generic;
     using System.Linq;
-    using _2021L_PAIM_Lab.ClassLibrary;
+    using _2021L_PAIM_Lab.Laboratorium.ClassLibrary;
 
 
     public class Program1

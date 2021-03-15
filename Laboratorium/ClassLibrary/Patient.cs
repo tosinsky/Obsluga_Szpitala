@@ -1,4 +1,4 @@
-﻿namespace _2021L_PAIM_Lab.ClassLibrary
+﻿namespace _2021L_PAIM_Lab.Laboratorium.ClassLibrary
 {
     using System;
     using System.Diagnostics;
