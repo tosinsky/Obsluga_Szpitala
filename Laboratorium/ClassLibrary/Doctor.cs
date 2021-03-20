@@ -9,7 +9,7 @@
 
     public class Doctor : Person
     {
-        
+        public int Specialization[] = new int { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
         public double Size { get; private set; }
 
         public Doctor(string name, double size) : base(name)
