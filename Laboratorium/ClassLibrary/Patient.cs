@@ -21,9 +21,6 @@
             this.Height = height;
         }
 
-        public override double GetArea()
-        {
-            return this.Width * this.Height;
-        }
+
     }
 }

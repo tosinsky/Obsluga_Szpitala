@@ -44,7 +44,7 @@
             return String.Format("{0} of Sex {1}", this.Name, this.Sex);
         }
 
-        public abstract double GetArea();
+
 
         #endregion
     }
