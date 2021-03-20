@@ -13,7 +13,7 @@
     {
         private readonly Person[] persons = new Person[]
         {
-      new Doctor( "Marek Eugeniusz", 1.0) { Sex = PersonSex.Male },
+      new Doctor( "Marek Eugeniusz", 1) { Sex = PersonSex.Male },
       new Patient( "Elżbieta Froncz", 2.0, 1.0 ) { Sex = PersonSex.Female },
       new Patient( "Darek Lebenga", 1.0, 2.0 ) { Sex = PersonSex.Male }
         };
