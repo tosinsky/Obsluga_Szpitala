@@ -28,7 +28,7 @@
         }
         public void AddCertifications(IEnumerable<Certification> certifications)
         {
-            foreach (var certification in certifications)
+            foreach(var certification in certifications)
                 Certifications.Add(certification);
         }
     }

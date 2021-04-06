@@ -16,7 +16,7 @@
             return new DoctorDto
             {
                 Number = Doctor.Number,
-                Certifications = Doctor?.Certifications.Select(s => s.Type.ToString())
+                Certifications = Doctor?.Certifications.Select(s => s.Type)
             };
         }
     }

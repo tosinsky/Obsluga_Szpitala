@@ -16,9 +16,9 @@
             this.DoctorsRepository = DoctorsRepository;
         }
 
-        public IEnumerable<DoctorDto> GetAll()
+        public async Task<IEnumerable<DoctorDto>> GetAllAsync()
         {
-            return DoctorsRepository.GetAll().Select(r=>r.Map());
+            return (await DoctorsRepository.GetAllAsync()).Select(r=>r.Map());
         }
 
         public IEnumerable<DoctorDto> GetByCertificationType(int certificationType)

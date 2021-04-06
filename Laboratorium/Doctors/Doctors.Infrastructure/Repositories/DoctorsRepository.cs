@@ -1,16 +1,16 @@
-﻿using Doctors.Domain;
-using Doctors.Domain.DoctorAggregate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
-using System.Data.Common;
-using System.Data.SqlClient;
-
-namespace Doctors.Infrastructure
+﻿namespace Doctors.Infrastructure
 {
+    using Dapper;
+    using Doctors.Domain;
+    using Doctors.Domain.DoctorAggregate;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Common;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class DoctorsRepository : IDoctorsRepository
     {
 
@@ -23,7 +23,7 @@ namespace Doctors.Infrastructure
             const string getAddedRowIdQueryQuery = @"SELECT CAST(SCOPE_IDENTITY() as int)";
 
             //utworzenie połączenia do bazy danych, klauzula using wykorzystywana jest żebyśmy nie musieli przejmować się zamykaniem polączenia
-            using (var dbConnection = new SqlConnection(Constants.connectionString))
+            using (var dbConnection =  new SqlConnection(Constants.connectionString)) 
             {
                 //otwarcie połączenia 
                 dbConnection.Open();
@@ -43,9 +43,9 @@ namespace Doctors.Infrastructure
                         foreach (var certifition in Doctor.Certifications)
                             certificationsIds.Add(await dbConnection.QueryFirstAsync<int>(insertCertificationQuery + ";" + getAddedRowIdQueryQuery, new { type = certifition.Type, grantedAt = certifition.GrantedAt }, transaction));
 
-                        const string insertDoctorCertificationQuery = @"INSERT INTO DoctorCertification (DoctorId, CertificationId) VALUES (@DoctorId,@certificationId);";
+                        const string insertExamitionRoomCertificationQuery = @"INSERT INTO DoctorCertification (DoctorId, CertificationId) VALUES (@DoctorId,@certificationId);";
                         foreach (var certifitionId in certificationsIds)
-                            await dbConnection.QueryAsync(insertDoctorCertificationQuery, new { DoctorId = DoctorId, certificationId = certifitionId }, transaction);
+                            await dbConnection.QueryAsync(insertExamitionRoomCertificationQuery, new { DoctorId = DoctorId, certificationId = certifitionId }, transaction);
                         //commit transakcji
                         transaction.Commit();
                     }
@@ -68,7 +68,7 @@ namespace Doctors.Infrastructure
                 //poprzednim razem otwarcia połączenia wymagało utworzenie transakcji
                 const string selectDoctorCertificationQuery = @"SELECT * FROM DoctorCertification";
 
-                var DoctorsCertificates = (await dbConnection.QueryAsync(selectDoctorCertificationQuery)).Select(x => new { CertificationId = x.CertificationId, DoctorId = x.DoctorId });
+                var DoctorsCertificates =  (await dbConnection.QueryAsync(selectDoctorCertificationQuery)).Select(x=> new { CertificationId = x.CertificationId, DoctorId = x.DoctorId });
 
                 const string selectDoctorQuery = @"SELECT * FROM Doctor";
 
@@ -80,7 +80,7 @@ namespace Doctors.Infrastructure
 
                 foreach (var Doctor in Doctors)
                 {
-                    var certificationsIdForGivenRoom = DoctorsCertificates.Where(x => x.DoctorId == Doctor.Id).Select(x => x.CertificationId);
+                    var certificationsIdForGivenRoom = DoctorsCertificates.Where(x => x.DoctorId == Doctor.Id).Select(x=>x.CertificationId);
                     var certificationsForGivenRoom = certifications.Where(x => certificationsIdForGivenRoom.Contains(x.Id));
                     Doctor.AddCertifications(certificationsForGivenRoom);
                 }

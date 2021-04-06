@@ -11,6 +11,6 @@
     {
         Task<IEnumerable<Doctor>> GetAllAsync();
         IEnumerable<Doctor> GetByCertificationType(int certificationType);
-        Task AddDoctorAsync(Doctor examinationRoom);
+        Task AddDoctorAsync(Doctor Doctor);
     }
 }

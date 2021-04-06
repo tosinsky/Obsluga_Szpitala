@@ -4,6 +4,7 @@ namespace Doctors.Web
     using Doctors.Domain.DoctorAggregate;
     using Doctors.Infrastructure;
     using Doctors.Web.Application;
+    using Doctors.Web.Application.Commands;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,8 +37,13 @@ namespace Doctors.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Doctors.Web", Version = "v1" });
             });
+
+            //Miejsce, w którym okreœlamy co ma siê kryæ za poszczególnymi interfejsami.
+            //Poni¿sze trzy linijki sprawi¹, ¿e kiedy zdefiniujemy kontruktor przyjmuj¹cy jako parametr jeden z poni¿szych interfejsów
+            //framework automatycznie "wstzyknie" do niego wskazan¹ przez nas implementacjê
             services.AddSingleton<IDoctorsRepository, DoctorsRepository>();
             services.AddTransient<IDoctorQueriesHandler, DoctorQueriesHandler>();
+            services.AddTransient<ICommandHandler<AddDoctorCommand>, DoctorsCommandsHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

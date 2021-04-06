@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Doctors.Domain\Doctors.Domain.csproj" />
     <ProjectReference Include="..\Doctors.Infrastructure\Doctors.Infrastructure.csproj" />
   </ItemGroup>
+
 
 </Project>

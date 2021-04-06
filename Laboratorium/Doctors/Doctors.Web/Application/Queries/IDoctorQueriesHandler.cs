@@ -8,7 +8,7 @@
 
     public interface IDoctorQueriesHandler
     {
-        IEnumerable<DoctorDto> GetAll();
+        Task<IEnumerable<DoctorDto>> GetAllAsync();
         IEnumerable<DoctorDto> GetByCertificationType(int certificationType);
     }
 }
