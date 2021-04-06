@@ -9,7 +9,8 @@
 
     public interface IExaminationRoomsRepository
     {
-        IEnumerable<ExaminationRoom> GetAll();
+        Task<IEnumerable<ExaminationRoom>> GetAllAsync();
         IEnumerable<ExaminationRoom> GetByCertificationType(int certificationType);
+        Task AddExaminationRoomAsync(ExaminationRoom examinationRoom);
     }
 }

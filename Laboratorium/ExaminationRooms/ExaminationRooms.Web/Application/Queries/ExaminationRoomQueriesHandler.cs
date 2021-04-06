@@ -16,9 +16,9 @@
             this.examinationRoomsRepository = examinationRoomsRepository;
         }
 
-        public IEnumerable<ExaminationRoomDto> GetAll()
+        public async Task<IEnumerable<ExaminationRoomDto>> GetAllAsync()
         {
-            return examinationRoomsRepository.GetAll().Select(r=>r.Map());
+            return (await examinationRoomsRepository.GetAllAsync()).Select(r=>r.Map());
         }
 
         public IEnumerable<ExaminationRoomDto> GetByCertificationType(int certificationType)

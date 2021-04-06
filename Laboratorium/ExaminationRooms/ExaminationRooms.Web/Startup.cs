@@ -4,6 +4,7 @@ namespace ExaminationRooms.Web
     using ExaminationRooms.Domain.ExaminationRoomAggregate;
     using ExaminationRooms.Infrastructure;
     using ExaminationRooms.Web.Application;
+    using ExaminationRooms.Web.Application.Commands;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,8 +37,13 @@ namespace ExaminationRooms.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRooms.Web", Version = "v1" });
             });
+
+            //Miejsce, w którym okreœlamy co ma siê kryæ za poszczególnymi interfejsami.
+            //Poni¿sze trzy linijki sprawi¹, ¿e kiedy zdefiniujemy kontruktor przyjmuj¹cy jako parametr jeden z poni¿szych interfejsów
+            //framework automatycznie "wstzyknie" do niego wskazan¹ przez nas implementacjê
             services.AddSingleton<IExaminationRoomsRepository, ExaminationRoomsRepository>();
             services.AddTransient<IExaminationRoomQueriesHandler, ExaminationRoomQueriesHandler>();
+            services.AddTransient<ICommandHandler<AddExaminationRoomCommand>, ExaminationRoomsCommandsHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,7 +8,7 @@
 
     public interface IExaminationRoomQueriesHandler
     {
-        IEnumerable<ExaminationRoomDto> GetAll();
+        Task<IEnumerable<ExaminationRoomDto>> GetAllAsync();
         IEnumerable<ExaminationRoomDto> GetByCertificationType(int certificationType);
     }
 }
