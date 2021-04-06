@@ -16,6 +16,7 @@
             Number = number;
         }
 
+
         public Doctor(int id, string number, IList<Certification> certifications) : this(id, number)
         {
             Certifications = certifications;
@@ -24,6 +25,11 @@
         public void AddCertification(Certification certification)
         {
             Certifications.Add(certification);
+        }
+        public void AddCertifications(IEnumerable<Certification> certifications)
+        {
+            foreach (var certification in certifications)
+                Certifications.Add(certification);
         }
     }
 }
