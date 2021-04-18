@@ -1,4 +1,4 @@
-﻿namespace Patients.Domain.PatientAggregate
+namespace Patients.Domain.PatientAggregate
 {
     using Patients.Domain.SeedWork;
     using System;
@@ -14,7 +14,6 @@
         public int PhoneNumber { get; private set; }
         public DateTime Birthdate { get; private set; }
  
-
         public IList<Appointment> Appointments { get; private set; } = new List<Appointment>();
 
         public Patient(int id, string name, string surname, long pesel, int phonenumber, DateTime birthdate) : base(id)
@@ -25,8 +24,6 @@
             PhoneNumber = phonenumber;
             Birthdate = birthdate;
         }
-
-
 
         public Patient(int id, string name, string surname, long pesel, int phonenumber, DateTime birthdate, IList<Appointment> appointments) : this(id, name, surname, pesel, phonenumber, birthdate)
         {
