@@ -1,4 +1,4 @@
-﻿namespace DoctorsSelector.Web.Application.DataServiceClients
+namespace DoctorsSelector.Web.Application.DataServiceClients
 {
     using DoctorsSelector.Web.Application.Dtos;
     using System;
@@ -18,7 +18,6 @@
 
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
         {
-
             var request = new HttpRequestMessage(HttpMethod.Get,
             $"https://localhost:44391/examination-rooms");
             request.Headers.Add("Accept", "application/json");
