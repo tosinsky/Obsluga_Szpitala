@@ -12,85 +12,91 @@
     xmlns:controller="using:ZsutPw.Patterns.WindowsApplication.Controller"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-  <Page.Resources>
-    <controller:ApplicationStateConverter x:Key="ApplicationStateConverter" />
-    <view:NodeDataConverter x:Key="NodeDataConverter" />
+    <Page.Resources>
+        <controller:ApplicationStateConverter x:Key="ApplicationStateConverter" />
+        <view:NodeDataConverter x:Key="NodeDataConverter" />
 
-    <DataTemplate x:Key="NodeListViewTemplate" x:DataType="model:NodeData">
-      <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource NodeDataConverter}}" />
-    </DataTemplate>
-  </Page.Resources>
+        <DataTemplate x:Key="NodeListViewTemplate" x:DataType="model:NodeData">
+            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource NodeDataConverter}}" />
+        </DataTemplate>
+    </Page.Resources>
 
-  <Page.BottomAppBar>
-    <CommandBar IsOpen="True" IsSticky="False" Visibility="Visible">
-      <AppBarButton Icon="List" Label="List" Command="{x:Bind Controller.ShowListCommand}" />
-      <AppBarButton Icon="Map" Label="Map" Command="{x:Bind Controller.ShowMapCommand}" />
-      <CommandBar.SecondaryCommands>
-        <AppBarButton Icon="Setting" Label="Settings" IsEnabled="False" />
-        <AppBarButton Icon="Help" Label="Help" />
-      </CommandBar.SecondaryCommands>
-    </CommandBar>
-  </Page.BottomAppBar>
-
-  <Grid x:Name="rootPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="400" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-
-    <Grid x:Name="listPanel" Background="AliceBlue"  Grid.Row="0" Width="300">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="320" />
-      </Grid.RowDefinitions>
-
-      <StackPanel x:Name="nodeSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
-        <TextBox x:Name="searchText" Header="Text to search:" Text="{x:Bind Model.SearchText, Mode=TwoWay}" Width="200" VerticalAlignment="Bottom" />
-        <AppBarButton x:Name="searchButton" Icon="Filter" Label="Search" Command="{x:Bind Controller.SearchNodesCommand}" VerticalAlignment="Bottom" />
-      </StackPanel>
-
-      <StackPanel x:Name="nodePanel" Grid.Row="1" Margin="4">
-        <TextBlock x:Name="nodeText" Text="Nodes" Margin="0,4,0,4" />
-        <ListView x:Name="nodeList" ItemsSource="{x:Bind Model.NodeList, Mode=OneWay}" ItemTemplate="{StaticResource NodeListViewTemplate}" SelectedItem="{x:Bind Model.SelectedNode, Mode=TwoWay}" Height="240" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" />
-        <CommandBar x:Name="nodeCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left">
-          <AppBarButton Icon="Add" Label="Add" />
-          <AppBarButton Icon="View" Label="View" />
-          <AppBarButton Icon="Edit" Label="Edit" />
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="True" IsSticky="False" Visibility="Visible">
+            <AppBarButton Icon="List" Label="List" Command="{x:Bind Controller.ShowListCommand}" />
+            <AppBarButton Icon="Map" Label="Map" Command="{x:Bind Controller.ShowMapCommand}" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting" Label="Settings" IsEnabled="True" />
+                <AppBarButton Icon="VideoChat" Label="Consultant" IsEnabled="True" />
+                <AppBarButton Icon="Help" Label="Help" />
+            </CommandBar.SecondaryCommands>
         </CommandBar>
-      </StackPanel>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="rootPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="434">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="listPanel" Background="DarkOliveGreen"  Grid.Row="0" Width="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="320" />
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="nodeSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
+                <TextBox x:Name="searchText" Header="Text to search:" Text="{x:Bind Model.SearchText, Mode=TwoWay}" Width="200" VerticalAlignment="Bottom" />
+                <AppBarButton x:Name="searchButton" Icon="Zoom" Label="Search" Command="{x:Bind Controller.SearchNodesCommand}" VerticalAlignment="Bottom" Height="47" Width="44" />
+                <AppBarButton x:Name="searchByVoiceButton" Icon="Microphone" Label="Search" Command="{x:Bind Controller.SearchNodesCommand}" VerticalAlignment="Bottom" Width="44" Height="47" />
+            </StackPanel>
+
+            <StackPanel x:Name="nodePanel" Grid.Row="1" Margin="4,4,4,0" Height="312" VerticalAlignment="Top">
+                <TextBlock x:Name="nodeText" Text="Nodes" Margin="0,4,0,4" />
+                <ListView x:Name="nodeList" ItemsSource="{x:Bind Model.NodeList, Mode=OneWay}" ItemTemplate="{StaticResource NodeListViewTemplate}" SelectedItem="{x:Bind Model.SelectedNode, Mode=TwoWay}" Height="222" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Width="285" />
+                <CommandBar x:Name="nodeCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="286" Height="43">
+                    <AppBarButton Icon="Add" Label="Add" HorizontalAlignment="Stretch" />
+                    <AppBarButton Icon="View" Label="View" />
+                    <AppBarButton Icon="Edit" Label="Edit" />
+                    <AppBarButton Icon="Delete" Label="Delete" />
+                    <AppBarButton Icon="Favorite" Label="Favorites" />
+                </CommandBar>
+            </StackPanel>
+        </Grid>
+
+        <HyperlinkButton x:Name="zsutHyperlink" Content="ZSUT IT PW home page" NavigateUri="https://zsut.tele.pw.edu.pl/" Grid.Row="1" HorizontalAlignment="Center" />
+        <HyperlinkButton x:Name="gitlabHyperlink" Content="GitLab" NavigateUri="https://gitlab-stud.elka.pw.edu.pl/dtosinsk/_2021L_PAIM_Lab/" Grid.Row="1" Margin="250,0,0,0" Width="50" />
+        <HyperlinkButton x:Name="eitiHyperlink" Content="WEiTIPW" NavigateUri="http://www.elka.pw.edu.pl/" Grid.Row="1" HorizontalAlignment="Left" />
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="map">
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:2.0" />
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:2.0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <VisualState x:Name="list">
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:2.0" />
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <i:Interaction.Behaviors>
+            <icore:DataTriggerBehavior Binding="{Binding CurrentState, Mode=OneWay, Converter={StaticResource ApplicationStateConverter}}" ComparisonCondition="Equal" Value="Map">
+                <icore:GoToStateAction StateName="map" />
+            </icore:DataTriggerBehavior>
+            <icore:DataTriggerBehavior Binding="{Binding CurrentState, Mode=OneWay, Converter={StaticResource ApplicationStateConverter}}" ComparisonCondition="Equal" Value="List">
+                <icore:GoToStateAction StateName="list" />
+            </icore:DataTriggerBehavior>
+        </i:Interaction.Behaviors>
     </Grid>
-
-    <HyperlinkButton x:Name="zsutHyperlink" Content="ZSUT IT PW home page" NavigateUri="https://zsut.tele.pw.edu.pl/" Grid.Row="1" HorizontalAlignment="Center" />
-
-    <VisualStateManager.VisualStateGroups>
-      <VisualStateGroup x:Name="ApplicationViewStates">
-        <VisualState x:Name="map">
-          <Storyboard>
-            <DoubleAnimation Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:2.0" />
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Visibility">
-              <DiscreteObjectKeyFrame KeyTime="0:0:2.0" Value="Collapsed"/>
-            </ObjectAnimationUsingKeyFrames>
-          </Storyboard>
-        </VisualState>
-
-        <VisualState x:Name="list">
-          <Storyboard>
-            <DoubleAnimation Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:2.0" />
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listPanel" Storyboard.TargetProperty="Visibility">
-              <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-            </ObjectAnimationUsingKeyFrames>
-          </Storyboard>
-        </VisualState>
-      </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>
-
-    <i:Interaction.Behaviors>
-      <icore:DataTriggerBehavior Binding="{Binding CurrentState, Mode=OneWay, Converter={StaticResource ApplicationStateConverter}}" ComparisonCondition="Equal" Value="Map">
-        <icore:GoToStateAction StateName="map" />
-      </icore:DataTriggerBehavior>
-      <icore:DataTriggerBehavior Binding="{Binding CurrentState, Mode=OneWay, Converter={StaticResource ApplicationStateConverter}}" ComparisonCondition="Equal" Value="List">
-        <icore:GoToStateAction StateName="list" />
-      </icore:DataTriggerBehavior>
-    </i:Interaction.Behaviors>
-  </Grid>
 </Page>
