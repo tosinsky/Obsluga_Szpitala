@@ -43,7 +43,7 @@
             //return (await examinationRoomsServiceClient.GetAllExaminationRoomsAsync()).Count();
         }
 
-        public Task<Dictionary<ExaminationRoomDto, DoctorDto>> GetDoctorsToRoomsAsync()
+        async public Task<Dictionary<ExaminationRoomDto, DoctorDto>> GetDoctorsToRoomsAsync()
         {
             var doctors = doctorsServiceClient.GetAllDoctorsAsync();
 
@@ -51,6 +51,7 @@
             foreach (var doctor in doctors.Result)
             {
                 doctorsList.Add(doctor);
+
             }
 
             var examinationRooms = examinationRoomsServiceClient.GetAllExaminationRoomsAsync();
@@ -68,9 +69,11 @@
             assignments.Add(examinationRoomsList[2], doctorsList[2]);
             assignments.Add(examinationRoomsList[3], doctorsList[3]);
 
-            //Console.WriteLine(examinationRoomsList);
-            //Console.WriteLine(doctorsList);
-            return Task.FromResult(assignments);
+
+
+            Console.WriteLine(examinationRoomsList);
+            Console.WriteLine(doctorsList);
+            return assignments;
             //return assignments;
             //return await assignments;
         }

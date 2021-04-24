@@ -8,6 +8,6 @@
     public class DoctorDto
     {
         public string Number { get; set; }
-        //public IEnumerable<string> Certifications { get; set; }
+        public IEnumerable<int> Certifications { get; set; }
     }
 }

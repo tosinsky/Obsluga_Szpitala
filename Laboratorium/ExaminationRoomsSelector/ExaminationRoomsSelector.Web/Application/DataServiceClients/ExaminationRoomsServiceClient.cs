@@ -10,7 +10,6 @@
 
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
-
         public IEnumerable<ExaminationRoomDto> GetAllExaminationRooms()
         {
             return new List<ExaminationRoomDto> { new ExaminationRoomDto() };
@@ -26,7 +25,7 @@
         {
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-            $"https://localhost:44392/examination-rooms");
+            $"https://localhost:44391/examination-rooms");
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();
