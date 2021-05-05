@@ -35,15 +35,15 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
     }
     private ApplicationState currentState = ApplicationState.List;
 
-    public ICommand SearchNodesCommand { get; private set; }
+    public ICommand SearchDoctorExaminationRoomsCommand { get; private set; }
 
     public ICommand ShowListCommand { get; private set; }
 
     public ICommand ShowMapCommand { get; private set; }
 
-    private void SearchNodes( )
+    private void SearchDoctorExaminationRooms( )
     {
-      this.Model.LoadNodeList( );
+      this.Model.LoadDoctorExaminationRoomList( );
     }
 
     private void ShowList( )

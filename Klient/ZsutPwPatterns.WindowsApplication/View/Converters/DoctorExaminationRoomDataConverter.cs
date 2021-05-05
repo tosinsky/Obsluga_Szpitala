@@ -23,13 +23,13 @@ namespace ZsutPw.Patterns.WindowsApplication.View
 
   using ZsutPw.Patterns.WindowsApplication.Model;
 
-  public class NodeDataConverter : IValueConverter
+  public class DoctorExaminationRoomConverter : IValueConverter
   {
     public object Convert( object value, Type targetType, object parameter, string language )
     {
-      NodeData nodeData = (NodeData)value;
+      DoctorExaminationRoom doctorExaminationRoom = (DoctorExaminationRoom)value;
 
-      return String.Format( "{0} at ({1},{2})", nodeData.Id, nodeData.Position.X, nodeData.Position.Y );
+      return String.Format( "{0} in room {1}", doctorExaminationRoom.Doctor, doctorExaminationRoom.ExaminationRoom );
     }
 
     public object ConvertBack( object value, Type targetType, object parameter, string language )

@@ -21,6 +21,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
   public interface INetwork
   {
-    NodeData[ ] GetNodes( string searchText );
+    DoctorExaminationRoom[ ] GetDoctorExaminationRooms( string searchText );
   }
 }

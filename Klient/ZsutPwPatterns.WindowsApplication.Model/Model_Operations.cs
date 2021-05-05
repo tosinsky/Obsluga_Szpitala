@@ -21,23 +21,23 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
   public partial class Model : IOperations
   {
-    public void LoadNodeList( )
+    public void LoadDoctorExaminationRoomList( )
     {
       /* AT
-      this.LoadNodesTask( );
+      this.LoadDoctorExaminationRoomsTask( );
       */
-      Task.Run( ( ) => this.LoadNodesTask( ) );
+      Task.Run( ( ) => this.LoadDoctorExaminationRoomsTask( ) );
     }
 
-    private void LoadNodesTask( )
+    private void LoadDoctorExaminationRoomsTask( )
     {
       INetwork networkClient = NetworkClientFactory.GetNetworkClient( );
 
       try
       {
-        NodeData[ ] nodes = networkClient.GetNodes( this.SearchText );
+        DoctorExaminationRoom[ ] doctorExaminationRooms = networkClient.GetDoctorExaminationRooms( this.SearchText );
 
-        this.NodeList = nodes.ToList( );
+        this.DoctorExaminationRoomList = doctorExaminationRooms.ToList( );
       }
       catch( Exception )
       {

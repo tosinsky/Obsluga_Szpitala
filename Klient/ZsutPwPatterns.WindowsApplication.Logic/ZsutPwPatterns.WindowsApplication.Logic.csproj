@@ -125,8 +125,7 @@
     <Compile Include="Controller\ControllerFactory.cs" />
     <Compile Include="Controller\Controller_Logic.cs" />
     <Compile Include="Controller\IController.cs" />
-    <Compile Include="Model\Data\NodeData.cs" />
-    <Compile Include="Model\Data\PointData.cs" />
+    <Compile Include="Model\Data\DoctorExaminationRoom.cs" />
     <Compile Include="Model\IData.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\IOperations.cs" />

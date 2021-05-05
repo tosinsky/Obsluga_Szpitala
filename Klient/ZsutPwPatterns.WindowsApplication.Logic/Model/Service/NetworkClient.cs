@@ -32,13 +32,13 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
       this.serviceClient = new ServiceClient( serviceHost, servicePort );
     }
 
-    public NodeData[ ] GetNodes( string searchText )
+    public DoctorExaminationRoom[ ] GetDoctorExaminationRooms( string searchText )
     {
-      string callUri = String.Format( "Network/GetNodes?searchText={0}", searchText );
+      string callUri = String.Format( "Network/GetDoctorExaminationRooms?searchText={0}", searchText );
 
-      NodeData[ ] nodes = this.serviceClient.CallWebService<NodeData[ ]>( HttpMethod.Get, callUri );
+      DoctorExaminationRoom[ ] doctorExaminationRooms = this.serviceClient.CallWebService<DoctorExaminationRoom[ ]>( HttpMethod.Get, callUri );
 
-      return nodes;
+      return doctorExaminationRooms;
     }
   }
 }

@@ -14,10 +14,10 @@
 
     <Page.Resources>
         <controller:ApplicationStateConverter x:Key="ApplicationStateConverter" />
-        <view:NodeDataConverter x:Key="NodeDataConverter" />
+        <view:DoctorExaminationRoomConverter x:Key="DoctorExaminationRoomConverter" />
 
-        <DataTemplate x:Key="NodeListViewTemplate" x:DataType="model:NodeData">
-            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource NodeDataConverter}}" />
+        <DataTemplate x:Key="DoctorExaminationRoomListViewTemplate" x:DataType="model:DoctorExaminationRoom">
+            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource DoctorExaminationRoomConverter}}" />
         </DataTemplate>
     </Page.Resources>
 
@@ -45,16 +45,16 @@
                 <RowDefinition Height="320" />
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="nodeSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
+            <StackPanel x:Name="doctorExaminationRoomSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
                 <TextBox x:Name="searchText" Header="Text to search:" Text="{x:Bind Model.SearchText, Mode=TwoWay}" Width="200" VerticalAlignment="Bottom" />
-                <AppBarButton x:Name="searchButton" Icon="Zoom" Label="Search" Command="{x:Bind Controller.SearchNodesCommand}" VerticalAlignment="Bottom" Height="47" Width="44" />
-                <AppBarButton x:Name="searchByVoiceButton" Icon="Microphone" Label="Search" Command="{x:Bind Controller.SearchNodesCommand}" VerticalAlignment="Bottom" Width="44" Height="47" />
+                <AppBarButton x:Name="searchButton" Icon="Zoom" Label="Search" Command="{x:Bind Controller.SearchDoctorExaminationRoomsCommand}" VerticalAlignment="Bottom" Height="47" Width="44" />
+                <AppBarButton x:Name="searchByVoiceButton" Icon="Microphone" Label="Search" Command="{x:Bind Controller.SearchDoctorExaminationRoomsCommand}" VerticalAlignment="Bottom" Width="44" Height="47" />
             </StackPanel>
 
-            <StackPanel x:Name="nodePanel" Grid.Row="1" Margin="4,4,4,0" Height="312" VerticalAlignment="Top">
-                <TextBlock x:Name="nodeText" Text="Nodes" Margin="0,4,0,4" />
-                <ListView x:Name="nodeList" ItemsSource="{x:Bind Model.NodeList, Mode=OneWay}" ItemTemplate="{StaticResource NodeListViewTemplate}" SelectedItem="{x:Bind Model.SelectedNode, Mode=TwoWay}" Height="222" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Width="285" />
-                <CommandBar x:Name="nodeCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="286" Height="43">
+            <StackPanel x:Name="doctorExaminationRoomPanel" Grid.Row="1" Margin="4,4,4,0" Height="312" VerticalAlignment="Top">
+                <TextBlock x:Name="doctorExaminationRoomText" Text="DoctorExaminationRooms" Margin="0,4,0,4" />
+                <ListView x:Name="doctorExaminationRoomList" ItemsSource="{x:Bind Model.DoctorExaminationRoomList, Mode=OneWay}" ItemTemplate="{StaticResource DoctorExaminationRoomListViewTemplate}" SelectedItem="{x:Bind Model.SelectedDoctorExaminationRoom, Mode=TwoWay}" Height="222" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Width="285" />
+                <CommandBar x:Name="doctorExaminationRoomCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="286" Height="43">
                     <AppBarButton Icon="Add" Label="Add" HorizontalAlignment="Stretch" />
                     <AppBarButton Icon="View" Label="View" />
                     <AppBarButton Icon="Edit" Label="Edit" />

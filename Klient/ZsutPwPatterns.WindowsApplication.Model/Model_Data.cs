@@ -33,28 +33,28 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
     }
     private string searchText;
 
-    public List<NodeData> NodeList
+    public List<DoctorExaminationRoom> DoctorExaminationRoomList
     {
-      get { return this.nodeList; }
+      get { return this.doctorExaminationRoomList; }
       private set
       {
-        this.nodeList = value;
+        this.doctorExaminationRoomList = value;
 
-        this.RaisePropertyChanged( "NodeList" );
+        this.RaisePropertyChanged( "DoctorExaminationRoomList" );
       }
     }
-    private List<NodeData> nodeList = new List<NodeData>( );
+    private List<DoctorExaminationRoom> doctorExaminationRoomList = new List<DoctorExaminationRoom>( );
 
-    public NodeData SelectedNode
+    public DoctorExaminationRoom SelectedDoctorExaminationRoom
     {
-      get { return this.selectedNode; }
+      get { return this.selectedDoctorExaminationRoom; }
       set
       {
-        this.selectedNode = value;
+        this.selectedDoctorExaminationRoom = value;
 
-        this.RaisePropertyChanged( "SelectedNode" );
+        this.RaisePropertyChanged( "SelectedDoctorExaminationRoom" );
       }
     }
-    private NodeData selectedNode;
+    private DoctorExaminationRoom selectedDoctorExaminationRoom;
   }
 }

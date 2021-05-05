@@ -19,10 +19,10 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Linq;
   using System.Threading.Tasks;
 
-  public class NodeData
+  public class DoctorExaminationRoom
   {
-    public string Id { get; set; }
+    public string Doctor { get; set; }
 
-    public PointData Position { get; set; }
+    public string ExaminationRoom { get; set; }
   }
 }

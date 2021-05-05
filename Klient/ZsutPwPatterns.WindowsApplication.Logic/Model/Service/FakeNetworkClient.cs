@@ -21,11 +21,11 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
   public class FakeNetworkClient : INetwork
   {
-    private static readonly NodeData[ ] nodes = new NodeData[ ] { new NodeData( ) { Id = "node1", Position = new PointData( ) { X = 0, Y = 0 } }, new NodeData( ) { Id = "node2", Position = new PointData( ) { X = 1, Y = 1 } } };
+    private static readonly DoctorExaminationRoom[ ] doctorExaminationRooms = new DoctorExaminationRoom[ ] { new DoctorExaminationRoom( ) { Doctor = "Maksymilian Frapp", ExaminationRoom = "217" } , new DoctorExaminationRoom( ) { Doctor = "Andrzeja Młokos", ExaminationRoom = "213a" }, new DoctorExaminationRoom() { Doctor = "Janina Cheeto", ExaminationRoom = "202" } };
 
-    public NodeData[ ] GetNodes( string searchText )
+    public DoctorExaminationRoom[ ] GetDoctorExaminationRooms( string searchText )
     {
-      return FakeNetworkClient.nodes;
+      return FakeNetworkClient.doctorExaminationRooms;
     }
   }
 }

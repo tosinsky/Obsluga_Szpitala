@@ -25,8 +25,8 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   {
     string SearchText { get; set; }
 
-    List<NodeData> NodeList { get; }
+    List<DoctorExaminationRoom> DoctorExaminationRoomList { get; }
 
-    NodeData SelectedNode { get; set; }
+    DoctorExaminationRoom SelectedDoctorExaminationRoom { get; set; }
   }
 }
