@@ -12,5 +12,6 @@
         Task<IEnumerable<Patient>> GetAllAsync();
         IEnumerable<Patient> GetByAppointmentDate(DateTime appointmentDate);
         Task AddPatientAsync(Patient Patient);
+        IEnumerable<Patient> GetBySurname(String surname);
     }
 }

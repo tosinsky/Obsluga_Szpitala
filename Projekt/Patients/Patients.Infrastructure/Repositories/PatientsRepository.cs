@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Data.Common;
     using System.Data.SqlClient;
+    using System.Diagnostics;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -23,7 +24,7 @@
             const string getAddedRowIdQueryQuery = @"SELECT CAST(SCOPE_IDENTITY() as int)";
 
             //utworzenie połączenia do bazy danych, klauzula using wykorzystywana jest żebyśmy nie musieli przejmować się zamykaniem polączenia
-            using (var dbConnection =  new SqlConnection(Constants.connectionString)) 
+            using (var dbConnection = new SqlConnection(Constants.connectionString))
             {
                 //otwarcie połączenia 
                 dbConnection.Open();
@@ -58,7 +59,6 @@
             }
         }
 
-
         public async Task<IEnumerable<Patient>> GetAllAsync()
         {
             using (var dbConnection = new SqlConnection(Constants.connectionString))
@@ -68,7 +68,7 @@
                 //poprzednim razem otwarcia połączenia wymagało utworzenie transakcji
                 const string selectPatientAppointmentQuery = @"SELECT * FROM PatientAppointment";
 
-                var PatientsAppointments =  (await dbConnection.QueryAsync(selectPatientAppointmentQuery)).Select(x=> new { AppointmentId = x.AppointmentId, PatientId = x.PatientId });
+                var PatientsAppointments = (await dbConnection.QueryAsync(selectPatientAppointmentQuery)).Select(x => new { AppointmentId = x.AppointmentId, PatientId = x.PatientId });
 
                 const string selectPatientQuery = @"SELECT * FROM Patient";
 
@@ -80,17 +80,51 @@
 
                 foreach (var Patient in Patients)
                 {
-                    var appointmentsIdForGivenPatient = PatientsAppointments.Where(x => x.PatientId == Patient.Id).Select(x=>x.AppointmentId);
+                    var appointmentsIdForGivenPatient = PatientsAppointments.Where(x => x.PatientId == Patient.Id).Select(x => x.AppointmentId);
                     var appointmentsForGivenPatient = appointments.Where(x => appointmentsIdForGivenPatient.Contains(x.Id));
                     Patient.AddAppointments(appointmentsForGivenPatient);
                 }
 
                 return Patients;
-            }        }
+            }
+        }
 
         public IEnumerable<Patient> GetByAppointmentDate(DateTime appointmentDate)
         {
-            throw new NotImplementedException();
+            IPatientsRepository patientRepository = new PatientsRepository() as IPatientsRepository;
+            Debug.Assert(condition: patientRepository != null);
+            Task<IEnumerable<Patient>> getPatientsTask = patientRepository.GetAllAsync();
+            IEnumerable<Patient> patients = getPatientsTask.Result;
+            List<Patient> filteredPatients = new List<Patient>();
+            foreach (Patient patient in patients)
+            {
+                foreach (Appointment appointment in patient.Appointments)
+                {
+                    if (appointment.AppointmentDate.Equals(appointmentDate))
+                    {
+                        filteredPatients.Add(patient);
+                    }
+                }
+            }
+            return filteredPatients;
+
+        }
+
+        public IEnumerable<Patient> GetBySurname(String surname)
+        {
+            IPatientsRepository patientRepository = new PatientsRepository() as IPatientsRepository;
+            Debug.Assert(condition: patientRepository != null);
+            Task<IEnumerable<Patient>> getPatientsTask = patientRepository.GetAllAsync();
+            IEnumerable<Patient> patients = getPatientsTask.Result;
+            List<Patient> filteredPatients = new List<Patient>();
+            foreach (Patient patient in patients)
+            {
+                if (patient.Surname.Equals(surname))
+                {
+                    filteredPatients.Add(patient);
+                }
+            }
+            return filteredPatients;
         }
     }
 }

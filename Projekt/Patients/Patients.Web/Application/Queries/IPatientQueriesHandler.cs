@@ -10,5 +10,6 @@
     {
         Task<IEnumerable<PatientDto>> GetAllAsync();
         IEnumerable<PatientDto> GetByAppointmentDate(DateTime appointmentDate);
+        IEnumerable<PatientDto> GetBySurname(String surname);
     }
 }

@@ -25,5 +25,9 @@
         {
             return PatientsRepository.GetByAppointmentDate(appointmentDate)?.Select(ld=>ld.Map());
         }
+        public IEnumerable<PatientDto> GetBySurname(String surname)
+        {
+            return PatientsRepository.GetBySurname(surname)?.Select(ld => ld.Map());
+        }
     }
 }
