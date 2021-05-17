@@ -19,8 +19,9 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Linq;
   using System.Threading.Tasks;
 
-  public interface INetwork
-  {
-    Patient[ ] GetPatients( string searchText );
-  }
+    public interface INetwork
+    {
+        Patient[] GetPatients(string searchText);
+        Patient[] GetPatientsBySurname(string searchText);
+    }
 }

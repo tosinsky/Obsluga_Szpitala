@@ -47,14 +47,14 @@
 
             <StackPanel x:Name="patientSearchPanel" Grid.Row="0" Orientation="Horizontal" Margin="4">
                 <TextBox x:Name="searchText" Header="Text to search:" Text="{x:Bind Model.SearchText, Mode=TwoWay}" Width="300" VerticalAlignment="Bottom" />
-                <AppBarButton x:Name="searchButton" Icon="Zoom" Label="Search" Command="{x:Bind Controller.SearchPatientsCommand}" VerticalAlignment="Bottom" Height="47" Width="44" />
-                <!--<AppBarButton x:Name="searchByVoiceButton" Icon="Microphone" Label="Search" Command="{x:Bind Controller.SearchPatientsCommand}" VerticalAlignment="Bottom" Width="44" Height="47" />-->
+                <AppBarButton x:Name="searchButton" Icon="Zoom" Label="Search" Command="{x:Bind Controller.SearchPatientsBySurnameCommand}" VerticalAlignment="Bottom" Height="47" Width="61" />
+                <AppBarButton x:Name="showAll" Icon="List" Label="Show All" Command="{x:Bind Controller.SearchPatientsCommand}" VerticalAlignment="Bottom" Width="56" Height="47" />
             </StackPanel>
 
             <StackPanel x:Name="patientPanel" Grid.Row="1" Margin="4,4,4,0" Height="312" VerticalAlignment="Top">
                 <TextBlock x:Name="patientText" Text="Patients" Margin="0,4,0,4" />
                 <ListView x:Name="patientList" ItemsSource="{x:Bind Model.PatientList, Mode=OneWay}" ItemTemplate="{StaticResource PatientListViewTemplate}" SelectedItem="{x:Bind Model.SelectedPatient, Mode=TwoWay}" Height="222" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Width="590" />
-                <CommandBar x:Name="patientCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="286" Height="43">
+                <CommandBar x:Name="patientCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="396" Height="43" RenderTransformOrigin="0.694,0.558">
                     <AppBarButton Icon="Add" Label="Add" HorizontalAlignment="Stretch" />
                     <AppBarButton Icon="View" Label="View" />
                     <AppBarButton Icon="Edit" Label="Edit" />

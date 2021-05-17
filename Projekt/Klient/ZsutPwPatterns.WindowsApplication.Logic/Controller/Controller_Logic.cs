@@ -20,8 +20,9 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
   using System.Threading.Tasks;
 
   using System.Windows.Input;
+    using ZsutPw.Patterns.WindowsApplication.Utilities;
 
-  public partial class Controller : IController
+    public partial class Controller : IController
   {
     public ApplicationState CurrentState
     {
@@ -37,16 +38,28 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
 
     public ICommand SearchPatientsCommand { get; private set; }
 
-    public ICommand ShowListCommand { get; private set; }
+     
 
-    public ICommand ShowMapCommand { get; private set; }
+        public ICommand ShowListCommand { get; private set; }
+
+        public ICommand SearchPatientsBySurnameCommand { get; private set; }
+
+      
+
+        public ICommand ShowMapCommand { get; private set; }
 
     private void SearchPatients( )
     {
       this.Model.LoadPatientList( );
     }
+        private void SearchPatientsBySurname()
+        {
+            this.Model.LoadPatientBySurnameList();
+        }
 
-    private void ShowList( )
+
+
+        private void ShowList( )
     {
       switch( this.CurrentState )
       {

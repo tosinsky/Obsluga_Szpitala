@@ -13,27 +13,29 @@
 
 namespace ZsutPw.Patterns.WindowsApplication.Controller
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
 
-  using System.ComponentModel;
-  using System.Windows.Input;
+    using System.ComponentModel;
+    using System.Windows.Input;
 
-  using ZsutPw.Patterns.WindowsApplication.Model;
+    using ZsutPw.Patterns.WindowsApplication.Model;
 
-  public interface IController : INotifyPropertyChanged
-  {
-    IModel Model { get; }
+    public interface IController : INotifyPropertyChanged
+    {
+        IModel Model { get; }
 
-    ApplicationState CurrentState { get; }
+        ApplicationState CurrentState { get; }
 
-    ICommand SearchPatientsCommand { get; }
+        ICommand SearchPatientsCommand { get; }
 
-    ICommand ShowListCommand { get; }
+        ICommand SearchPatientsBySurnameCommand { get; }
 
-    ICommand ShowMapCommand { get; }
-  }
+        ICommand ShowListCommand { get; }
+
+        ICommand ShowMapCommand { get; }
+    }
 }

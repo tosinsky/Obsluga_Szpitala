@@ -19,29 +19,58 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Text;
   using System.Threading.Tasks;
 
-  public partial class Model : IOperations
-  {
-    public void LoadPatientList( )
+    public partial class Model : IOperations
     {
-      /* AT
-      this.LoadPatientsTask( );
-      */
-      Task.Run( ( ) => this.LoadPatientsTask( ) );
+        public void LoadPatientList()
+        {
+            /* AT
+            this.LoadPatientsTask( );
+            */
+            Task.Run(() => this.LoadPatientsTask());
+            
+        }
+        public void LoadPatientBySurnameList()
+        {
+            /* AT
+            this.LoadPatientsTask( );
+            */
+            Task.Run(() => this.LoadPatientsBySurnameTask());
+
+        }
+
+
+        private void LoadPatientsTask()
+        {
+            INetwork networkClient = NetworkClientFactory.GetNetworkClient();
+
+            try
+            {
+                Patient[] patients = networkClient.GetPatients(this.SearchText);
+
+                this.PatientList = patients.ToList();
+            }
+
+            catch (Exception)
+            {
+            }
+        }
+        private void LoadPatientsBySurnameTask()
+        {
+            INetwork networkClient = NetworkClientFactory.GetNetworkClient();
+
+            try
+            {
+                Patient[] patients = networkClient.GetPatientsBySurname(this.SearchText);
+
+                this.PatientList = patients.ToList();
+            }
+
+            catch (Exception)
+            {
+            }
+        }
+
+
     }
+} 
 
-    private void LoadPatientsTask( )
-    {
-      INetwork networkClient = NetworkClientFactory.GetNetworkClient( );
-
-      try
-      {
-                Patient[ ] patients = networkClient.GetPatients( this.SearchText );
-
-        this.PatientList = patients.ToList( );
-      }
-      catch( Exception )
-      {
-      }
-    }
-  }
-}

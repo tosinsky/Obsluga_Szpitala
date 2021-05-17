@@ -28,5 +28,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
             //return FakeNetworkClient.patients;
             return null;
     }
-  }
+      
+    }
 }

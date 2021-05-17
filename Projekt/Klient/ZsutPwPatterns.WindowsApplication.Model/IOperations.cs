@@ -22,5 +22,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   public interface IOperations
   {
     void LoadPatientList( );
+
   }
 }

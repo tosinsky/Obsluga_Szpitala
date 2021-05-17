@@ -19,13 +19,9 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class Patient
+    public class Appointment
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public long PESEL { get; set; }
-        public int PhoneNumber { get; set; }
-        public DateTime Birthdate { get; set; }
-        public List<string> Appointments { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public string Reason { get; set; }
     }
 }

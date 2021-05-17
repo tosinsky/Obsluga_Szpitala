@@ -19,14 +19,21 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Linq;
   using System.Threading.Tasks;
 
-  public class FakeNetworkClient : INetwork
-  {
-    //private static readonly Patient[ ] patients = new Patient[ ] { new Patient( ) { Doctor = "Maksymilian Frapp", ExaminationRoom = "217" } , new Patient( ) { Doctor = "Andrzeja Młokos", ExaminationRoom = "213a" }, new Patient() { Doctor = "Janina Cheeto", ExaminationRoom = "202" } };
-
-    public Patient[ ] GetPatients( string searchText )
+    public class FakeNetworkClient : INetwork
     {
+        //private static readonly Patient[ ] patients = new Patient[ ] { new Patient( ) { Doctor = "Maksymilian Frapp", ExaminationRoom = "217" } , new Patient( ) { Doctor = "Andrzeja Młokos", ExaminationRoom = "213a" }, new Patient() { Doctor = "Janina Cheeto", ExaminationRoom = "202" } };
+
+        public Patient[] GetPatients(string searchText)
+        {
             //return FakeNetworkClient.patients;
             return null;
-    }
-  }
+        }
+
+        public Patient[] GetPatientsBySurname(string searchText)
+        {
+            //return FakeNetworkClient.patients;
+            return null;
+        }
+
+    } 
 }

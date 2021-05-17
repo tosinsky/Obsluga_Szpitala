@@ -13,32 +13,43 @@
 
 namespace ZsutPw.Patterns.WindowsApplication.Model
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
 
-  using System.Net.Http;
-  
-  public class NetworkClient : INetwork
-  {
-    private readonly ServiceClient serviceClient;
+    using System.Net.Http;
 
-    public NetworkClient( string serviceHost, int servicePort )
+    public class NetworkClient : INetwork
     {
-      Debug.Assert( condition: !String.IsNullOrEmpty( serviceHost ) && servicePort > 0 );
+        private readonly ServiceClient serviceClient;
 
-      this.serviceClient = new ServiceClient( serviceHost, servicePort );
+        public NetworkClient(string serviceHost, int servicePort)
+        {
+            Debug.Assert(condition: !String.IsNullOrEmpty(serviceHost) && servicePort > 0);
+
+            this.serviceClient = new ServiceClient(serviceHost, servicePort);
+        }
+
+        public Patient[] GetPatients(string searchText)
+        {
+            string callUri = String.Format("patients-list", searchText);
+
+            Patient[] patients = this.serviceClient.CallWebService<Patient[]>(HttpMethod.Get, callUri);
+
+            return patients;
+        }
+        public Patient[] GetPatientsBySurname(string searchText)
+        {
+            string callUri = String.Format("patient-by-surname?surname={0}", searchText);
+
+            Patient[] patients = this.serviceClient.CallWebService<Patient[]>(HttpMethod.Get, callUri);
+
+            return patients;
+        }
+
+
     }
-
-    public Patient[ ] GetPatients( string searchText )
-    {
-      string callUri = String.Format( "patients-list", searchText );
-
-      Patient[ ] patients = this.serviceClient.CallWebService<Patient[ ]>( HttpMethod.Get, callUri );
-
-      return patients;
-    }
-  }
 }
+

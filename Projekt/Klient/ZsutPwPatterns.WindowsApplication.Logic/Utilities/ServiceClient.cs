@@ -71,9 +71,11 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
       httpResponseMessage.EnsureSuccessStatusCode( );
 
+
       string httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync( );
 
-      return httpResponseContent;
+     
+            return httpResponseContent;
     }
 
     private T ConvertJson<T>(string json)

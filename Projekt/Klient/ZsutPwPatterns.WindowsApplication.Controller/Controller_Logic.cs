@@ -37,6 +37,8 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
 
     public ICommand SearchPatientsCommand { get; private set; }
 
+    public ICommand SearchSurnamePatientsCommand { get; private set; }
+
     public ICommand ShowListCommand { get; private set; }
 
     public ICommand ShowMapCommand { get; private set; }
@@ -45,6 +47,8 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
     {
       this.Model.LoadPatientList( );
     }
+
+      
 
     private void ShowList( )
     {

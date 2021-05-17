@@ -32,7 +32,9 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
 
     ICommand SearchPatientsCommand { get; }
 
-    ICommand ShowListCommand { get; }
+      
+
+        ICommand ShowListCommand { get; }
 
     ICommand ShowMapCommand { get; }
   }

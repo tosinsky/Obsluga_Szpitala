@@ -13,28 +13,32 @@
 
 namespace ZsutPw.Patterns.WindowsApplication.Controller
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Diagnostics;
-  using System.Linq;
-  using System.Threading.Tasks;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
+    using ZsutPw.Patterns.WindowsApplication.Model;
+    using ZsutPw.Patterns.WindowsApplication.Utilities;
 
-  using ZsutPw.Patterns.WindowsApplication.Model;
-  using ZsutPw.Patterns.WindowsApplication.Utilities;
-
-  public partial class Controller : PropertyContainerBase, IController
-  {
-    public IModel Model { get; private set; }
-
-    public Controller( IEventDispatcher dispatcher, IModel model ) : base( dispatcher )
+    public partial class Controller : PropertyContainerBase, IController
     {
-      this.Model = model;
+        public IModel Model { get; private set; }
 
-      this.SearchPatientsCommand = new ControllerCommand( this.SearchPatients);
+        //ICommand IController.SearchSurnamePatientsCommand => throw new NotImplementedException();
 
-      this.ShowListCommand = new ControllerCommand( this.ShowList );
+        public Controller(IEventDispatcher dispatcher, IModel model) : base(dispatcher)
+        {
+            this.Model = model;
 
-      this.ShowMapCommand = new ControllerCommand( this.ShowMap );
+            this.SearchPatientsCommand = new ControllerCommand(this.SearchPatients);
+
+            this.SearchPatientsBySurnameCommand = new ControllerCommand(this.SearchPatientsBySurname);
+
+            this.ShowListCommand = new ControllerCommand(this.ShowList);
+
+            this.ShowMapCommand = new ControllerCommand(this.ShowMap);
+        }
     }
-  }
 }

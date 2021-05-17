@@ -32,6 +32,8 @@ namespace ZsutPw.Patterns.WindowsApplication.Controller
 
       this.SearchPatientsCommand = new ControllerCommand( this.SearchPatients);
 
+     
+
       this.ShowListCommand = new ControllerCommand( this.ShowList );
 
       this.ShowMapCommand = new ControllerCommand( this.ShowMap );

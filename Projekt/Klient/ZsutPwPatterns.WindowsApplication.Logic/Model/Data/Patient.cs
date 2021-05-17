@@ -26,6 +26,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
         public long PESEL { get; set; }
         public int PhoneNumber { get; set; }
         public DateTime Birthdate { get; set; }
-        public IList<string> Appointments { get; set; }
+        public List<string> Appointments { get; set; }
     }
 }
