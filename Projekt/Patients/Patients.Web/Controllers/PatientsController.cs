@@ -25,7 +25,7 @@
             this.addPatientCommandHandler = addPatientCommandHandler;
         }
 
-        [HttpGet("patients-list")]
+        [HttpGet("patients")]
         public async Task<IEnumerable<PatientDto>> GetAllAsync()
         {
             return await PatientQueriesHandler.GetAllAsync();
@@ -48,14 +48,14 @@
         //{
         //    addPatientCommandHandler.Handle(PatientCommand);
         //}
-        [HttpPost]
-        [Route("AddPatient")]
-        public void AddPatient(int Id, string Name, string Surname, long PESEL, int PhoneNumber, DateTime Birthdate)
-        {
-            IPatientsRepository patientRepository = new PatientsRepository() as IPatientsRepository;
-            Patient patient = new Patient(8, Name, Surname, PESEL, PhoneNumber, Birthdate);
+        //[HttpPost]
+        //[Route("AddPatient")]
+        //public void AddPatient(int Id, string Name, string Surname, long PESEL, int PhoneNumber, DateTime Birthdate)
+        //{
+        //    IPatientsRepository patientRepository = new PatientsRepository() as IPatientsRepository;
+        //    Patient patient = new Patient(8, Name, Surname, PESEL, PhoneNumber, Birthdate);
 
-            patientRepository.AddPatientAsync(patient);
-        }
+        //    patientRepository.AddPatientAsync(patient);
+        //}
     }
 }
