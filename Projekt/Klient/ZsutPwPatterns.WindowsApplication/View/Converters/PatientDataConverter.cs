@@ -30,7 +30,7 @@ namespace ZsutPw.Patterns.WindowsApplication.View
       Patient patient = (Patient)value;
 
             var res = "[" + string.Join(", ", patient.Appointments.Select(s => $"'{s}'")) + "]";
-            return String.Format( "{0} {1}, {2}, {3}, {4}, {5}", patient.Name, patient.Surname, patient.PESEL, patient.Birthdate.ToString("dd/MM/yyyy"), patient.PhoneNumber, res);
+            return String.Format( "{0} {1},\n PESEL: {2},\n numer telefonu: {3},\n data urodzenia: {4},\n historia wizyt: {5}", patient.Name, patient.Surname, patient.PESEL, patient.PhoneNumber, patient.Birthdate.ToString("dd/MM/yyyy"), res);
     }
 
     public object ConvertBack( object value, Type targetType, object parameter, string language )

@@ -17,7 +17,7 @@
         <view:PatientConverter x:Key="PatientConverter" />
 
         <DataTemplate x:Key="PatientListViewTemplate" x:DataType="model:Patient">
-            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource PatientConverter}}" />
+            <TextBlock TextWrapping="Wrap" Text="{x:Bind Mode=OneTime, Converter={StaticResource PatientConverter}}" />
         </DataTemplate>
     </Page.Resources>
 
@@ -54,7 +54,7 @@
             <StackPanel x:Name="patientPanel" Grid.Row="1" Margin="4,4,4,0" Height="312" VerticalAlignment="Top">
                 <TextBlock x:Name="patientText" Text="Patients" Margin="0,4,0,4" />
                 <ListView x:Name="patientList" ItemsSource="{x:Bind Model.PatientList, Mode=OneWay}" ItemTemplate="{StaticResource PatientListViewTemplate}" SelectedItem="{x:Bind Model.SelectedPatient, Mode=TwoWay}" Height="222" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" Width="590" />
-                <CommandBar x:Name="patientCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="396" Height="43" RenderTransformOrigin="0.694,0.558">
+                <CommandBar x:Name="patientCommandBar" DefaultLabelPosition="Right" Background="Transparent" HorizontalAlignment="Left" Width="531" Height="43" RenderTransformOrigin="0.694,0.558">
                     <AppBarButton Icon="Add" Label="Add" HorizontalAlignment="Stretch" />
                     <AppBarButton Icon="View" Label="View" />
                     <AppBarButton Icon="Edit" Label="Edit" />
@@ -65,8 +65,12 @@
         </Grid>
 
         <HyperlinkButton x:Name="zsutHyperlink" Content="ZSUT IT PW home page" NavigateUri="https://zsut.tele.pw.edu.pl/" Grid.Row="1" HorizontalAlignment="Center" />
-        <HyperlinkButton x:Name="gitlabHyperlink" Content="GitLab" NavigateUri="https://gitlab-stud.elka.pw.edu.pl/dtosinsk/_2021L_PAIM_Lab/" Grid.Row="1" Margin="250,0,0,0" Width="50" />
-        <HyperlinkButton x:Name="eitiHyperlink" Content="WEiTIPW" NavigateUri="http://www.elka.pw.edu.pl/" Grid.Row="1" HorizontalAlignment="Left" />
+        <HyperlinkButton x:Name="gitlabHyperlink" Content="GitLab" NavigateUri="https://gitlab-stud.elka.pw.edu.pl/dtosinsk/_2021L_PAIM_Lab/" Grid.Row="1" Width="54" RenderTransformOrigin="0.444,0.531" Margin="160,0,0,0" >
+            <HyperlinkButton.RenderTransform>
+                <CompositeTransform ScaleX="1" TranslateX="337.004"/>
+            </HyperlinkButton.RenderTransform>
+        </HyperlinkButton>
+        <HyperlinkButton x:Name="eitiHyperlink" Content="WEiTIPW" NavigateUri="http://www.elka.pw.edu.pl/" RenderTransformOrigin="0.464,0.5" Margin="24,0,0,0" Grid.Row="1" />
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ApplicationViewStates">
