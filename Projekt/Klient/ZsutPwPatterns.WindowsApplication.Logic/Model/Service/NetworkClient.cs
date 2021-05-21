@@ -34,7 +34,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
         public Patient[] GetPatients(string searchText)
         {
-            string callUri = String.Format("patients-list", searchText);
+            string callUri = String.Format("patients", searchText);
 
             Patient[] patients = this.serviceClient.CallWebService<Patient[]>(HttpMethod.Get, callUri);
 
