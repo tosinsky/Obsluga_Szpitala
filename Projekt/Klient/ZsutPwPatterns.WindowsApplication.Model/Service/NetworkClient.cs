@@ -42,7 +42,15 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
         }
         public Patient[] GetPatientsBySurname(string searchText)
         {
-            string callUri = String.Format("patient-by-surname?surname={0}", searchText);
+            string callUri = null;
+            if (searchText.Contains("."))
+            {
+                callUri = String.Format("patient-by-appointmentDate?appointmentDate={0}", searchText);
+            }
+            else
+            {
+                callUri = String.Format("patient-by-surname?surname={0}", searchText);
+            }
 
             Patient[] patients = this.serviceClient.CallWebService<Patient[]>(HttpMethod.Get, callUri);
 
