@@ -21,20 +21,15 @@ namespace ZsutPw.Patterns.Application.Model
 
     public class FakeNetworkClient : INetwork
     {
-        //private static readonly Patient[ ] patients = new Patient[ ] { new Patient( ) { Doctor = "Maksymilian Frapp", ExaminationRoom = "217" } , new Patient( ) { Doctor = "Andrzeja Młokos", ExaminationRoom = "213a" }, new Patient() { Doctor = "Janina Cheeto", ExaminationRoom = "202" } };
-
         public Patient[] GetPatients(string searchText)
         {
-            //return FakeNetworkClient.patients;
             return null;
         }
 
         public Patient[] GetPatientsBySurname(string searchText)
         {
-            //return FakeNetworkClient.patients;
             return null;
         }
-
     }
 }
 

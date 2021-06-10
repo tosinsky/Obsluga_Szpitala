@@ -44,9 +44,6 @@ namespace ZsutPw.Patterns.Application.Utilities
             {
                 PropertyChangedEventArgs args = new PropertyChangedEventArgs(propertyName);
 
-                /* AT
-                handler( this, args );
-                */
                 Action action = () => handler(this, args);
 
                 this.dispatcher.Dispatch(action);

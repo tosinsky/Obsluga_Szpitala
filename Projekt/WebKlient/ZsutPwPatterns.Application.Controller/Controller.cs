@@ -26,8 +26,6 @@ namespace ZsutPw.Patterns.Application.Controller
     {
         public IModel Model { get; private set; }
 
-        //ICommand IController.SearchSurnamePatientsCommand => throw new NotImplementedException();
-
         public Controller(IEventDispatcher dispatcher, IModel model) : base(dispatcher)
         {
             this.Model = model;

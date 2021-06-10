@@ -24,9 +24,7 @@ namespace ZsutPw.Patterns.Application.Model
     public interface IData : INotifyPropertyChanged
     {
         string SearchText { get; set; }
-
         List<Patient> PatientList { get; }
-
         Patient SelectedPatient { get; set; }
     }
 }

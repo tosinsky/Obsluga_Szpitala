@@ -27,15 +27,10 @@ namespace ZsutPw.Patterns.Application.Controller
     public interface IController : INotifyPropertyChanged
     {
         IModel Model { get; }
-
         ApplicationState CurrentState { get; }
-
         ICommand SearchPatientsCommand { get; }
-
         ICommand SearchPatientsBySurnameCommand { get; }
-
         ICommand ShowListCommand { get; }
-
         ICommand ShowMapCommand { get; }
     }
 }

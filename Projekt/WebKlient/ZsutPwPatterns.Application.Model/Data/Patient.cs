@@ -27,7 +27,5 @@ namespace ZsutPw.Patterns.Application.Model
         public int PhoneNumber { get; set; }
         public DateTime Birthdate { get; set; }
         public List<string> Appointments { get; set; }
-
-
     }
 }

@@ -23,21 +23,12 @@ namespace ZsutPw.Patterns.Application.Model
     {
         public void LoadPatientList()
         {
-            /* AT
-            this.LoadPatientsTask( );
-            */
             Task.Run(() => this.LoadPatientsTask());
-
         }
         public void LoadPatientBySurnameList()
         {
-            /* AT
-            this.LoadPatientsTask( );
-            */
             Task.Run(() => this.LoadPatientsBySurnameTask());
-
         }
-
 
         private void LoadPatientsTask()
         {
@@ -69,8 +60,6 @@ namespace ZsutPw.Patterns.Application.Model
             {
             }
         }
-
-
     }
 }
 

@@ -23,6 +23,5 @@ namespace ZsutPw.Patterns.Application.Model
     {
         void LoadPatientList();
         void LoadPatientBySurnameList();
-
     }
 }
