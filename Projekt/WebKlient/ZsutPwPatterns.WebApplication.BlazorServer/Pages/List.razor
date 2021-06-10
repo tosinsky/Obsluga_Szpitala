@@ -2,31 +2,20 @@
 @inject IController controller
 @inject IModel model
 
-<h5>Text to search:</h5>
-<input name="searchText" class="text-box single-line" @bind="model.SearchText" style="width: 200px" />
+<h5 style=" color:black">Text to search:</h5>
+<input name="searchText" class="text-box single-line" @bind="model.SearchText" style="width: 300px" />
 
-<button name="searchButton" class="btn btn-secondary" @onclick="@(() => controller.SearchPatientsBySurnameCommand.Execute(true))">Search</button>
-<button name="showAllButton" class="btn btn-secondary" @onclick="@(() => controller.SearchPatientsCommand.Execute(true))">Show All</button>
+<button name="searchButton" class="btn btn-light" @onclick="@(() => controller.SearchPatientsBySurnameCommand.Execute(true))">Search</button>
+<button name="showAllButton" class="btn btn-light" @onclick="@(() => controller.SearchPatientsCommand.Execute(true))">Show All</button>
 
-<h5 style="margin: 4px 0px 4px 0px">Pacjenci</h5>
-<div class="col-xl-6" style="height: 240px">
-
+<h5 style="margin: 4px 0px 4px 0px">Patients</h5>
+<div class="col-xl-6" style="height: 550px; background-color: white">
     @foreach (Patient patient in model.PatientList)
     {
         var @res = "[" + string.Join(", ", patient.Appointments.Select(s => $"'{s}'")) + "]";
         <div class="row">
-            <button class="btn btn-" style="width: 600px">@patient.Name @patient.Surname, <br /> PESEL: @patient.PESEL, <br /> numer telefonu: @patient.PhoneNumber, <br /> data urodzenia: @patient.Birthdate.ToString("dd/MM/yyyy"),<br /> historia wizyt: @res</button>
+            <button class="btn btn-" style="width: 600px">@patient.Name @patient.Surname, <br /> PESEL: @patient.PESEL, <br /> Numer telefonu: @patient.PhoneNumber, <br /> Data urodzenia: @patient.Birthdate.ToString("dd/MM/yyyy"),<br /> Historia wizyt: @res</button>
         </div>
     }
-</div>
-
-<div class="row" style="width: 200px; justify-content: space-around">
-  <button class="btn btn-light" style="width: 60px">Add</button>
-  <button class="btn btn-light" style="width: 60px">View</button>
-  <button class="btn btn-light" style="width: 60px">Edit</button>
-</div>
-
-<div class="col-xl-6" style="margin-top: 24px; width: 240px; justify-content: right">
-  <a href="https://zsut.tele.pw.edu.pl/" target="_blank">ZSUT IT PW home page</a>
 </div>
 
